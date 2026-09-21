@@ -9,8 +9,8 @@ No subimos los `.gguf` a este repo: pesan varios GB y cada uno tiene su licencia
 | Hardware | Modelo diario | Contexto | Para qué |
 | --- | --- | --- | --- |
 | GPU 8 GB / 16 GB RAM | Jan-code 4B Q4_K | 16–32k | Código rápido |
-| GPU 12 GB (RTX 3060) | Qwen2.5-Coder 7B Q4_K_M | 16k | Apps (web, Android, Flutter) |
-| GPU 12 GB, más calidad | Qwen3 14B Q4_K_M | 8k | Entender más / arquitectura |
+| GPU 12 GB (RTX 3060) | Qwen3 14B Q4_K_M | 8k | Entender de todo + SSH |
+| GPU 12 GB, código | Qwen2.5-Coder 7B Q4_K_M | 16k | Apps (web, Android, Flutter) |
 | Solo CPU, 32 GB RAM | Qwen2.5-Coder 7B Q4_K_M | 8–16k | Más lento, usable |
 
 ## Enlaces

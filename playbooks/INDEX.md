@@ -12,5 +12,8 @@ Ruta: `workspace/playbooks/` (dentro de la carpeta de datos de Jan).
 | API / backend / base de datos | `backend.md` | FastAPI o Node |
 | Escritorio Windows | `desktop.md` | Tauri 2 o Python |
 | Tests, seguridad, tiendas | `calidad.md` | siempre |
+| SSH / servidor remoto | `ssh.md` | clave, no contraseña en el chat |
+| Linux, Windows, Docker, Git, red | `sistemas.md` | primero leer, luego cambiar |
+| Entender cualquier tema (agente) | `conocimiento.md` | herramientas de verdad |
 
-Regla: un stack por proyecto. No mezcles Flutter con RN ni Compose con XML layouts salvo que lo pidan.
+Regla: un stack por proyecto. Si piden SSH o “el servidor”, usa `ssh.md` y las herramientas SSH.

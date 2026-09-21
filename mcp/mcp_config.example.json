@@ -12,6 +12,22 @@
       "env": {},
       "type": "stdio"
     },
+    "SSH": {
+      "active": true,
+      "args": ["-y", "@caikiji/mcp-ssh"],
+      "command": "npx",
+      "env": {
+        "SSH_SERVICES": "$config"
+      },
+      "type": "stdio"
+    },
+    "SSH-adhoc": {
+      "active": true,
+      "args": ["-y", "mcp-server-ssh"],
+      "command": "npx",
+      "env": {},
+      "type": "stdio"
+    },
     "fetch": {
       "active": true,
       "args": ["mcp-server-fetch"],
@@ -32,7 +48,7 @@
     "maxRestartDelayMs": 30000,
     "routerModelId": "",
     "routerModelProvider": "",
-    "toolCallTimeoutSeconds": 120,
+    "toolCallTimeoutSeconds": 180,
     "useLightweightRouterModel": true
   }
 }
