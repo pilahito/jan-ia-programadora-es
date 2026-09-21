@@ -1,0 +1,38 @@
+{
+  "mcpServers": {
+    "Filesystem": {
+      "active": true,
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "CAMBIA_ESTA_RUTA_A_TU_CARPETA_JAN",
+        "CAMBIA_ESTA_RUTA_A_TU_WORKSPACE"
+      ],
+      "command": "npx",
+      "env": {},
+      "type": "stdio"
+    },
+    "fetch": {
+      "active": true,
+      "args": ["mcp-server-fetch"],
+      "command": "uvx",
+      "env": {}
+    },
+    "sequential-thinking": {
+      "active": true,
+      "args": ["-y", "@modelcontextprotocol/server-sequential-thinking"],
+      "command": "npx",
+      "env": {}
+    }
+  },
+  "mcpSettings": {
+    "backoffMultiplier": 2,
+    "baseRestartDelayMs": 1000,
+    "enableSmartToolRouting": true,
+    "maxRestartDelayMs": 30000,
+    "routerModelId": "",
+    "routerModelProvider": "",
+    "toolCallTimeoutSeconds": 120,
+    "useLightweightRouterModel": true
+  }
+}

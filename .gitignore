@@ -1,0 +1,7 @@
+.DS_Store
+Thumbs.db
+*.gguf
+*.bak
+.env
+mcp_config.json
+node_modules/
