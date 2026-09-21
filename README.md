@@ -1,29 +1,29 @@
 # Jan IA programadora (español)
 
-Pack para [Jan](https://jan.ai): asistentes en **español**, listos para programar en local y **traducir inglés → español**. Sin nube, sin telemetría extra, sin modelos binarios en el repo.
+Pack para [Jan](https://jan.ai): asistentes en **español** para programar en local (web, **apps móviles**, escritorio, APIs) y **traducir inglés → español**. Sin nube y sin modelos `.gguf` en el repo.
 
-Pensado para una RTX 3060 12 GB / 32 GB RAM, pero sirve en cualquier PC que ya ejecute Jan con GGUF.
+Pensado para RTX 3060 12 GB / 32 GB RAM; sirve en cualquier PC que ya ejecute Jan con GGUF.
 
 ## Qué incluye
 
 | Asistente | Para qué |
 | --- | --- |
-| **Jan** | Día a día: código + explicación en español + traducción cuando se pida |
-| **Programadora local** | Ingeniería: diffs, depuración, PRs. Temperatura 0.2 |
-| **Traductora EN→ES** | Pegas inglés (docs, UI, README) y sale español natural, sin tocar el código |
+| **Jan** | General: entiende pedidos vagos, programa, explica, traduce |
+| **Programadora local** | Full-stack: web, API, escritorio, Android, Flutter, Expo, iOS |
+| **Apps móviles** | Kotlin/Compose, Flutter, Expo, SwiftUI (iOS se genera; se compila en Mac) |
+| **Traductora EN→ES** | Docs, UI, `strings.xml`, ARB, fichas de tienda. No toca el código |
 
-También:
+Playbooks en `playbooks/` (Android, Flutter, iOS, RN, web, backend, escritorio, calidad): recetas cortas que las IAs deben leer al crear un proyecto.
 
-- Preset llama.cpp para GPU 12 GB (`presets/rtx3060-12gb.ini`)
-- MCP de ejemplo: archivos + fetch + pensamiento secuencial
-- Instalador para Windows y Unix
+También: preset llama.cpp 12 GB, MCP de ejemplo, instalador Windows/Unix.
 
 ## Requisitos
 
 - [Jan Desktop](https://jan.ai/download) 0.6+ (probado en 0.8)
-- Un modelo **GGUF** de código (ver [docs/modelos.md](docs/modelos.md))
-- NVIDIA: backend **CUDA** en Ajustes → llama.cpp
-- Node.js (para MCP `npx`) si quieres herramientas de archivos
+- Un modelo **GGUF** de código — [docs/modelos.md](docs/modelos.md)
+- NVIDIA: backend **CUDA**
+- Node.js si quieres MCP de archivos
+- Para **ver** una app Android: Android Studio / emulador, o Flutter. iOS nativo exige Mac.
 
 ## Instalación
 
@@ -33,7 +33,7 @@ cd jan-ia-programadora-es
 .\install.ps1
 ```
 
-Si tu carpeta de datos no es la de por defecto:
+Carpeta de datos distinta:
 
 ```powershell
 .\install.ps1 -JanData "E:\Jan"
@@ -46,59 +46,36 @@ chmod +x install.sh
 ./install.sh "$HOME/.local/share/Jan/data"
 ```
 
-Reinicia Jan. En el selector de asistentes aparecen los tres.
+Reinicia Jan. Aparecen los cuatro asistentes. El instalador copia también `workspace/playbooks/`.
 
-## Configuración óptima (12 GB VRAM)
+## Configuración (12 GB VRAM)
 
-En Jan → **Ajustes → llama.cpp**:
+Ajustes → llama.cpp: CUDA, `CUDA0`, Flash Attention on, Fit on, 1 modelo cargado, n-gpu-layers 99, KV `q8_0`.
 
-- Backend: `win-cuda-13-common_cpus-x64` (o el CUDA que te recomiende Jan)
-- Devices: `CUDA0`
-- Flash Attention: on
-- Fit: on
-- Max models loaded: 1
-- n-gpu-layers: 99
-- KV cache K/V: `q8_0`
-- Context: 16k en 7B, 32k en 4B, **8k** en 14B
+Contexto: 16k (7B), 32k (4B), **8k** (14B). No uses 50k–100k en una 3060.
 
-No uses contextos de 50k–100k en una 3060: el modelo carga y luego se queda sin VRAM al generar.
+### Qué modelo
 
-### Qué modelo elegir
-
-1. **Código rápido:** Jan-code 4B Q4  
-2. **Mejor código:** Qwen2.5-Coder 7B Instruct Q4_K_M  
-3. **Más calidad / traducción larga:** Qwen3 14B Q4_K_M con 8k de contexto  
-
-Detalles y enlaces: [docs/modelos.md](docs/modelos.md).
+| Objetivo | Modelo |
+| --- | --- |
+| Escribir apps (recomendado) | Qwen2.5-Coder 7B Instruct Q4_K_M |
+| Entender más / arquitectura | Qwen3-14B Q4_K_M (8k) |
+| Ir rápido | Jan-code 4B Q4 |
 
 ## Uso
 
-**Programar**
+**App de móvil:** asistente *Apps móviles* + Qwen2.5-Coder 7B. Di “app Flutter de notas” o “Android Kotlin con login”. En Windows el default es Flutter→Android.
 
-1. Asistente: *Programadora local*  
-2. Modelo: Qwen2.5-Coder 7B o Jan-code 4B  
-3. Pega el error o el archivo. Pide el cambio concreto.
+**Web o API:** *Programadora local*.
 
-**Traducir inglés → español**
+**Traducir UI:** *Traductora EN→ES* (sirve `strings.xml` y listados de Play Store).
 
-1. Asistente: *Traductora EN→ES*  
-2. Pega el texto. No hace falta decir «traduce» (el sistema ya asume EN→ES).  
-3. Conserva fences, identificadores y markdown.
+**MCP:** copia `mcp/mcp_config.example.json` a tu `mcp_config.json` y pon la ruta de tu repo.
 
-**MCP de archivos**
+## Qué no va aquí
 
-Copia `mcp/mcp_config.example.json` sobre `mcp_config.json` de tu carpeta Jan y cambia las rutas a tu workspace. Luego Ajustes → MCP.
-
-## Qué no va en este repo
-
-- Archivos `.gguf` (descárgalos tú)
-- Conversaciones, logs, claves API
-- Binarios de CUDA / llama.cpp (los gestiona Jan)
-
-## Licencia
-
-MIT. Los modelos GGUF tienen su propia licencia en Hugging Face.
+`.gguf`, chats, claves, binarios de CUDA. Licencia MIT; los modelos tienen la suya en Hugging Face.
 
 ## Contribuir
 
-Ver [CONTRIBUTING.md](CONTRIBUTING.md). Issues y PRs en español o inglés.
+[CONTRIBUTING.md](CONTRIBUTING.md).

@@ -24,5 +24,6 @@ Temperatura orientativa: código `0.2`, traducción `0.25`, general `0.3`.
 2. En Jan, elige el asistente.
 3. Prueba:
    - «Escribe una función Python que reciba una lista y quite duplicados conservando el orden.»
+   - «App Flutter de lista de tareas con dos pantallas.»
    - Pega un párrafo en inglés y pide «traduce».
-4. Confirma que responde en español y no traduce identificadores de código.
+4. Confirma que responde en español, no traduce identificadores, y que una app nueva cita el playbook del stack.

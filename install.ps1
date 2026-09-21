@@ -1,7 +1,7 @@
 #Requires -Version 5.1
 <#
 .SYNOPSIS
-  Copia los asistentes de este pack a la carpeta de datos de Jan.
+  Copia asistentes y playbooks a la carpeta de datos de Jan.
 #>
 param(
   [string]$JanData = ""
@@ -43,9 +43,18 @@ Get-ChildItem $src -Directory | ForEach-Object {
   }
   New-Item -ItemType Directory -Force -Path $target | Out-Null
   Copy-Item (Join-Path $_.FullName "assistant.json") (Join-Path $target "assistant.json") -Force
-  Write-Host "Instalado: $($_.Name)"
+  Write-Host "Asistente: $($_.Name)"
+}
+
+$playSrc = Join-Path $here "playbooks"
+$playDst = Join-Path $destRoot "workspace\playbooks"
+if (Test-Path $playSrc) {
+  New-Item -ItemType Directory -Force -Path $playDst | Out-Null
+  Copy-Item -Force (Join-Path $playSrc "*.md") $playDst
+  Write-Host "Playbooks: $playDst"
 }
 
 Write-Host ""
 Write-Host "Listo. Carpeta Jan: $destRoot"
-Write-Host "Reinicia Jan y elige el asistente: Jan, Programadora local o Traductora EN→ES."
+Write-Host "Reinicia Jan. Asistentes: Jan, Programadora local, Apps móviles, Traductora EN→ES."
+Write-Host "Modelo recomendado para apps: Qwen2.5-Coder 7B. Para entender más: Qwen3-14B."

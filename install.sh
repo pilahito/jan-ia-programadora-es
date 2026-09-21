@@ -37,9 +37,15 @@ for dir in "${HERE}/assistants"/*; do
     cp "${target}/assistant.json" "${target}/assistant.json.bak"
   fi
   cp "${dir}/assistant.json" "${target}/assistant.json"
-  echo "Instalado: ${name}"
+  echo "Asistente: ${name}"
 done
+
+if [[ -d "${HERE}/playbooks" ]]; then
+  mkdir -p "${DEST}/workspace/playbooks"
+  cp "${HERE}/playbooks/"*.md "${DEST}/workspace/playbooks/"
+  echo "Playbooks: ${DEST}/workspace/playbooks"
+fi
 
 echo
 echo "Listo. Carpeta Jan: ${DEST}"
-echo "Reinicia Jan y elige el asistente."
+echo "Reinicia Jan. Asistentes: Jan, Programadora local, Apps móviles, Traductora EN→ES."
