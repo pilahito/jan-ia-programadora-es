@@ -1,6 +1,6 @@
 # Playbooks — léelos según la tarea
 
-Ruta: `workspace/playbooks/` (dentro de la carpeta de datos de Jan).
+Ruta: `E:\Jan\workspace\playbooks\`
 
 | Si el usuario pide | Archivo | Stack por defecto (Windows) |
 | --- | --- | --- |
@@ -12,8 +12,12 @@ Ruta: `workspace/playbooks/` (dentro de la carpeta de datos de Jan).
 | API / backend / base de datos | `backend.md` | FastAPI o Node |
 | Escritorio Windows | `desktop.md` | Tauri 2 o Python |
 | Tests, seguridad, tiendas | `calidad.md` | siempre |
-| SSH / servidor remoto | `ssh.md` | clave, no contraseña en el chat |
+| SSH / servidor / solaris | `ssh.md` | clave ed25519, puerto 2220 |
 | Linux, Windows, Docker, Git, red | `sistemas.md` | primero leer, luego cambiar |
 | Entender cualquier tema (agente) | `conocimiento.md` | herramientas de verdad |
+| Brave / MCP navegador | `brave-mcp.md` | Jan Browser MCP, puerto 17389 |
+| MCP SuperAssistant (extensión Brave) | `superassistant.md` | proxy `localhost:3006/sse` |
+| Vídeo, doblaje, manga→serie (original) | `cine.md`, `doblaje.md`, `manga-serie.md` | asistente Cineasta local |
 
-Regla: un stack por proyecto. Si piden SSH o “el servidor”, usa `ssh.md` y las herramientas SSH.
+Regla: un stack por proyecto. No mezcles Flutter con RN ni Compose con XML layouts salvo que lo pidan.
+Si el usuario pide “entra al servidor”, “SSH”, “solaris”: `ssh.md` y las herramientas SSH.
