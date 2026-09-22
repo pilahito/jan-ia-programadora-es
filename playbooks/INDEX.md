@@ -17,7 +17,11 @@ Ruta: `E:\Jan\workspace\playbooks\`
 | Entender cualquier tema (agente) | `conocimiento.md` | herramientas de verdad |
 | Brave / MCP navegador | `brave-mcp.md` | Jan Browser MCP, puerto 17389 |
 | MCP SuperAssistant (extensión Brave) | `superassistant.md` | proxy `localhost:3006/sse` |
-| Vídeo, doblaje, manga→serie (original) | `cine.md`, `doblaje.md`, `manga-serie.md` | asistente Cineasta local |
+| Vídeo, doblaje, manga→serie (original) | `cine.md`, `doblaje.md`, `manga-serie.md` | Cineasta local |
+| Guion siempre en español | `doblaje.md`, `manga-serie.md` | Guionista ES |
+| Prompts de vídeo sin censura (original) | `cine.md` | Video sin censura |
+| Hentai adultos originales | `hentai.md` | Video sin censura / Guionista ES |
+| Catálogo series/pelis/manga | `E:\\SERIE-PELICULAS\\biblioteca\\catalogo.md` | asistente Biblioteca |
 
 Regla: un stack por proyecto. No mezcles Flutter con RN ni Compose con XML layouts salvo que lo pidan.
 Si el usuario pide “entra al servidor”, “SSH”, “solaris”: `ssh.md` y las herramientas SSH.

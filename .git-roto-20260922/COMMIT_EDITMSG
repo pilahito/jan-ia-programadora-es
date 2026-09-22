@@ -1,0 +1,7 @@
+playbooks: nueva-produccion.ps1 funcionaba solo en PowerShell 7
+
+Usaba Join-Path con tres argumentos (AdditionalChildPath), que en Windows
+PowerShell 5.1 no existe: el script moria con 'no hay ningun parametro de
+posicion que acepte...'. Ahora anida dos Join-Path y funciona en ambos.
+
+Probado en PowerShell 5.1: crea la carpeta y actualiza el catalogo.

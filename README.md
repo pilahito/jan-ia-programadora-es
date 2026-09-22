@@ -13,6 +13,10 @@ Pensado para RTX 3060 12 GB / 32 GB RAM; sirve en cualquier PC que ya ejecute Ja
 | **Apps móviles** | Kotlin/Compose, Flutter, Expo, SwiftUI (iOS se genera; se compila en Mac) |
 | **Sistemas y SSH** | Linux, Windows, Docker, redes, Git; entra al servidor con MCP SSH |
 | **Traductora EN→ES** | Docs, UI, `strings.xml`, ARB, fichas de tienda. No toca el código |
+| **Biblioteca** | Catálogo de tu carpeta de series/pelis/manga: qué hay y qué se puede crear |
+| **Cineasta** | Vídeo de ficción original en español: guion, planos, doblaje y montaje |
+| **Guionista** | Guiones largos en español por capítulos: biblia, diálogos, doblaje |
+| **Vídeo sin censura** | Producciones originales explícitas para adultos (18+) |
 
 Playbooks en `playbooks/` (Android, Flutter, iOS, RN, web, backend, escritorio, calidad): recetas cortas que las IAs deben leer al crear un proyecto.
 
@@ -47,7 +51,7 @@ chmod +x install.sh
 ./install.sh "$HOME/.local/share/Jan/data"
 ```
 
-Reinicia Jan. Aparecen los cinco asistentes. El instalador copia también `workspace/playbooks/`.
+Reinicia Jan. Aparecen los nueve asistentes. El instalador copia también `workspace/playbooks/`.
 
 SSH: en `mcp_config.json` deja `SSH_SERVICES` en `$config` si tus hosts están en `~/.ssh/config` (User + IdentityFile). No subas claves al repo.
 
@@ -80,6 +84,12 @@ Contexto: 16k (7B), 32k (4B), **8k** (14B). No uses 50k–100k en una 3060.
 ## Qué no va aquí
 
 `.gguf`, chats, claves, binarios de CUDA. Licencia MIT; los modelos tienen la suya en Hugging Face.
+
+## Si algo falla
+
+¿El modelo no carga, "Generation failed", el router de llama.cpp caído o la GPU
+invisible? Guía paso a paso: [docs/reparar-llamacpp.md](docs/reparar-llamacpp.md).
+Comprobación automática: `.\tools\reparar-llamacpp.ps1 -DryRun`.
 
 ## Contribuir
 

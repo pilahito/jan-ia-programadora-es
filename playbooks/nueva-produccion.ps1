@@ -1,0 +1,25 @@
+param(
+  [Parameter(Mandatory = $true)][string]$Nombre,
+  [ValidateSet("series", "peliculas", "hentai")][string]$Tipo = "series"
+)
+$ErrorActionPreference = "Stop"
+$slug = ($Nombre.ToLower() -replace "[^a-z0-9]+", "-").Trim("-")
+$root = Join-Path (Join-Path "E:\SERIE-PELICULAS" $Tipo) $slug
+$bloque = if ($Tipo -eq "peliculas") { "parte01" } else { "ep01" }
+@(
+  "$root\00-biblia",
+  "$root\01-guion\en",
+  "$root\01-guion\es",
+  "$root\02-planos\$bloque\sc01",
+  "$root\03-audio\en",
+  "$root\03-audio\es\$bloque",
+  "$root\04-montaje"
+) | ForEach-Object { New-Item -ItemType Directory -Force -Path $_ | Out-Null }
+$nota = switch ($Tipo) {
+  "peliculas" { "Cada PARTE = maximo 25 min. EN->ES por parte, voces NUEVAS. No clonar actores." }
+  "hentai" { "Hentai ORIGINAL, adultos 18+. Partes 25 min. Espanol. No loli/shota ni IPs ajenas (Spider, etc.)." }
+  default { "Capitulos ~25 min. Espanol. EN->ES si el origen esta en ingles." }
+}
+"# $Nombre`nCarpeta: $root`n$nota`n" | Set-Content (Join-Path $root "README.md") -Encoding utf8
+Write-Host "OK $root ($bloque)"
+& (Join-Path $PSScriptRoot "actualizar-biblioteca.ps1")

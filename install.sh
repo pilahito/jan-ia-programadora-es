@@ -48,4 +48,4 @@ fi
 
 echo
 echo "Listo. Carpeta Jan: ${DEST}"
-echo "Reinicia Jan. Asistentes: Jan, Programadora local, Apps móviles, Traductora EN→ES."
+echo "Reinicia Jan. Asistentes: Jan, Programadora, Apps moviles, Sistemas y SSH, Traductora, Biblioteca, Cineasta, Guionista, Video sin censura.

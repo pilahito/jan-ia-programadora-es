@@ -56,5 +56,5 @@ if (Test-Path $playSrc) {
 
 Write-Host ""
 Write-Host "Listo. Carpeta Jan: $destRoot"
-Write-Host "Reinicia Jan. Asistentes: Jan, Programadora, Apps móviles, Sistemas y SSH, Traductora."
+Write-Host "Reinicia Jan. Asistentes: Jan, Programadora, Apps moviles, Sistemas y SSH, Traductora, Biblioteca, Cineasta, Guionista, Video sin censura.
 Write-Host "Para entender de todo + SSH: Qwen3-14B. Para picar apps: Qwen2.5-Coder 7B."
